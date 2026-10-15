@@ -14,9 +14,13 @@ This dashboard reads your local OpenClaw configuration and session data, providi
 ## Features
 
 - **Bot Overview** — Card wall showing all agents with name, emoji, model, platform bindings, session stats, and gateway health status
+- **Global Overview** — Weekly token consumption leaderboard (Top 10 agents with instance filter pills), plan quota watermarks (5-hour + weekly dual progress bars per key pool with next reset time), and global statistics trends (input/output token curves, average response time, day/week/month/total views)
+- **Daily Broadcast Board** — Three-state tracking of all scheduled tasks across the fleet (completed / failed / pending), today's failed-task list with error summaries and consecutive-failure counts, and per-agent task tracking
 - **Model List** — View all configured providers and models with context window, max output, reasoning support, and per-model test
 - **Session Management** — Browse all sessions per agent with type detection (DM, group, cron), token usage, and connectivity test
 - **Statistics** — Token consumption and average response time trends with daily/weekly/monthly views and SVG charts
+- **Agent Daily Reports** — Auto-generated daily reports per agent: aggregated session facts (conversations, task lists, tool calls, cron jobs) distilled by LLM into structured narrative, browsable per instance with one-click regeneration
+- **API Key Management** — Instance-level key pool with fingerprint grouping; point-and-select key rotation applied to agent auth profiles with hot reload; key pool overview aggregated across agents sharing the same key
 - **Skill Management** — View all installed skills (built-in, extension, custom) with search and filter
 - **Alert Center** — Configure alert rules (model unavailable, bot no response) with Feishu notification delivery
 - **Gateway Health** — Real-time gateway status indicator with 10s auto-polling and one-click jump to OpenClaw web UI
@@ -30,6 +34,36 @@ This dashboard reads your local OpenClaw configuration and session data, providi
 ## Preview
 
 ![Dashboard Preview](docs/bot_dashboard.png)
+
+### Global Overview
+
+Global overview: weekly token leaderboard with instance filter:
+
+![Global Overview - Leaderboard](docs/global-overview-1.jpg)
+
+Global overview: quota watermark and statistics trends:
+
+![Global Overview - Quota & Trends](docs/global-overview-2.jpg)
+
+### Daily Broadcast Board
+
+Today's broadcast board: three-state task tracking and failed-task list:
+
+![Daily Broadcast](docs/daily-broadcast.jpg)
+
+### Agent Daily Reports
+
+Agent daily reports: per-instance bot list and report detail:
+
+![Agent Daily - List](docs/agent-daily-list.jpg)
+
+![Agent Daily - Detail](docs/agent-daily-detail.jpg)
+
+### API Key Management
+
+API Key management: instance-level key pool and rotation:
+
+![API Keys](docs/api-keys.jpg)
 
 ![Models Preview](docs/models-preview.png)
 
@@ -164,6 +198,10 @@ docker run -d --name openclaw-dashboard -p 3000:3000 -e OPENCLAW_HOME=/opt/openc
 ## 功能
 
 - **机器人总览** — 卡片墙展示所有 Agent 的名称、Emoji、模型、平台绑定、会话统计和 Gateway 健康状态
+- **全局概况** — 本周 Token 消耗排行榜（Top 10 Agent，支持按实例筛选：全部实例/QD/default/sxs/GTM/PJT/GYL/PPJD/XMT/need/PPXS）；套餐额度水位（按 Key 池聚合的 5 小时额度 + 周额度双进度条，含下次重置时间）；全局统计趋势（Input/Output Token 曲线、平均响应时间趋势，支持按天/周/月/总计切换）
+- **今日播报** — 全集群定时任务三档状态追踪（已完成 / 暂失败 / 待开始，30 秒自刷）；今日失败任务列表（任务名、所属 Agent 与实例标签、连续失败次数、错误摘要、时间）；底部 Agent 任务追踪模块按 Agent 分组展示子任务与长期定时任务明细
+- **Agent 日报** — 每日定时聚合各 Agent 的会话事实（会话数、任务列表、工具调用、定时任务四项统计），由 LLM 总结生成结构化日报（主要任务、问题与修复等分节）；按实例分组浏览全部机器人，支持一键重新生成
+- **API Keys** — 实例级密钥池管理：按实例 Tab 切换，点选式更换 Key（写入 auth profile 并热重载生效）；Key 池总览按指纹聚合展示共用同一 Key 的全部 Agent；明文 Key 仅服务端保管，浏览器全程不接触
 - **模型列表** — 查看所有已配置的 Provider 和模型，包含上下文窗口、最大输出、推理支持及单模型测试
 - **会话管理** — 按 Agent 浏览所有会话，支持类型识别（私聊、群聊、定时任务）、Token 用量和连通性测试
 - **消息统计** — Token 消耗和平均响应时间趋势，支持按天/周/月查看，SVG 图表展示
@@ -180,6 +218,36 @@ docker run -d --name openclaw-dashboard -p 3000:3000 -e OPENCLAW_HOME=/opt/openc
 ## 预览
 
 ![仪表盘预览](docs/bot_dashboard.png)
+
+### 全局概况
+
+全局概况：本周 Token 消耗排行榜（支持实例筛选）：
+
+![全局概况 - 排行榜](docs/global-overview-1.jpg)
+
+全局概况：套餐额度水位与统计趋势：
+
+![全局概况 - 水位与趋势](docs/global-overview-2.jpg)
+
+### 今日播报
+
+今日播报：定时任务三档状态追踪与失败任务列表：
+
+![今日播报](docs/daily-broadcast.jpg)
+
+### Agent 日报
+
+Agent 日报：按实例分组的机器人列表与日报详情：
+
+![Agent 日报 - 列表](docs/agent-daily-list.jpg)
+
+![Agent 日报 - 详情](docs/agent-daily-detail.jpg)
+
+### API Key 管理
+
+API Key 管理：实例级密钥池与点选式换 Key：
+
+![API Keys](docs/api-keys.jpg)
 
 ![模型列表预览](docs/models-preview.png)
 
