@@ -1,0 +1,154 @@
+[
+  {
+    "id": "ingestion-openclaw-model-routing-optimization",
+    "title": "OpenClaw Model Routing Optimization",
+    "summary": "Frequent model/routing discussion suggests smarter model selection based on task complexity, latency, and cost.",
+    "created_at": "2026-04-30T21:18:35.794Z",
+    "stage": "opportunity",
+    "council_session_id": "auto-ingestion",
+    "promotion_reason": "Detected from usage pattern analysis (1 signal)",
+    "proposing_model": "ollama-cloud/qwen3.5:397b-cloud",
+    "origin_type": "proactive",
+    "origin_tags": [
+      "⚙️ Efficiency Gap",
+      "📊 Early Signal"
+    ],
+    "proactive_lens": "efficiency",
+    "idea_ledger_id": "ledger-openclaw-model-routing-optimization",
+    "council_confidence": "high",
+    "debate_summary": [
+      "Evidence: 1 matching usage signal found in available session/log text",
+      "Impact: Frequent model/routing discussion suggests smarter model selection based on task complexity, latency, and cost.",
+      "Resource check: start with a narrow, reversible implementation before broader automation"
+    ],
+    "key_disagreements": [
+      {
+        "model": "devil-advocate",
+        "concern": "Signal could be inflated by repeated discussion rather than repeated operational pain",
+        "resolution": "Require dedupe and keep items in trending/opportunity until supported by concrete task telemetry"
+      }
+    ],
+    "council_recommendation": "Add read-only model routing telemetry first, then A/B test routing rules by task class and cost/latency outcome.",
+    "passing_reasoning": "high confidence based on 1 observed signal and low-risk staged rollout path",
+    "escalation_type": "auto",
+    "session_type": "scheduled",
+    "scheduled_for": "2026-04-30T21:19:24.061Z",
+    "session_time_of_day": "evening",
+    "decision": null,
+    "is_hidden": false
+  },
+  {
+    "id": "ingestion-telegram-webhook-integration",
+    "title": "Telegram Webhook Integration",
+    "summary": "Telegram-heavy operations would benefit from async processing, idempotency, and status feedback.",
+    "created_at": "2026-04-30T21:18:35.794Z",
+    "stage": "trending",
+    "council_session_id": "auto-ingestion",
+    "promotion_reason": "Detected from usage pattern analysis (1 signal)",
+    "proposing_model": "ollama-cloud/qwen3.5:397b-cloud",
+    "origin_type": "proactive",
+    "origin_tags": [
+      "🏗️ Infrastructure Idea",
+      "📊 Early Signal"
+    ],
+    "proactive_lens": "infrastructure",
+    "idea_ledger_id": "ledger-telegram-webhook-integration",
+    "council_confidence": "medium",
+    "debate_summary": [
+      "Evidence: 1 matching usage signal found in available session/log text",
+      "Impact: Telegram-heavy operations would benefit from async processing, idempotency, and status feedback.",
+      "Resource check: start with a narrow, reversible implementation before broader automation"
+    ],
+    "key_disagreements": [
+      {
+        "model": "devil-advocate",
+        "concern": "Signal could be inflated by repeated discussion rather than repeated operational pain",
+        "resolution": "Require dedupe and keep items in trending/opportunity until supported by concrete task telemetry"
+      }
+    ],
+    "council_recommendation": "Back Telegram-triggered long jobs with the detached runner/outbox pattern, idempotency keys, and confirmation gates for side effects.",
+    "passing_reasoning": "medium confidence based on 1 observed signal and low-risk staged rollout path",
+    "escalation_type": "auto",
+    "session_type": "scheduled",
+    "scheduled_for": "2026-04-30T21:19:24.061Z",
+    "session_time_of_day": "evening",
+    "decision": null,
+    "is_hidden": false
+  },
+  {
+    "id": "ingestion-docker-deployment-pipeline",
+    "title": "Docker Deployment Pipeline",
+    "summary": "Repeated build/deploy signals suggest a repo-specific CI/CD pipeline with caching and approval gates.",
+    "created_at": "2026-04-30T21:18:35.794Z",
+    "stage": "opportunity",
+    "council_session_id": "auto-ingestion",
+    "promotion_reason": "Detected from usage pattern analysis (1 signal)",
+    "proposing_model": "ollama-cloud/qwen3.5:397b-cloud",
+    "origin_type": "proactive",
+    "origin_tags": [
+      "⚙️ Efficiency Gap",
+      "📊 Early Signal"
+    ],
+    "proactive_lens": "efficiency",
+    "idea_ledger_id": "ledger-docker-deployment-pipeline",
+    "council_confidence": "high",
+    "debate_summary": [
+      "Evidence: 1 matching usage signal found in available session/log text",
+      "Impact: Repeated build/deploy signals suggest a repo-specific CI/CD pipeline with caching and approval gates.",
+      "Resource check: start with a narrow, reversible implementation before broader automation"
+    ],
+    "key_disagreements": [
+      {
+        "model": "devil-advocate",
+        "concern": "Signal could be inflated by repeated discussion rather than repeated operational pain",
+        "resolution": "Require dedupe and keep items in trending/opportunity until supported by concrete task telemetry"
+      }
+    ],
+    "council_recommendation": "Start with one dashboard repository workflow: build, cache dependencies, run tests, and require approval for production pushes.",
+    "passing_reasoning": "high confidence based on 1 observed signal and low-risk staged rollout path",
+    "escalation_type": "auto",
+    "session_type": "scheduled",
+    "scheduled_for": "2026-04-30T21:19:24.061Z",
+    "session_time_of_day": "evening",
+    "decision": null,
+    "is_hidden": false
+  },
+  {
+    "id": "ingestion-self-improvement-automation",
+    "title": "Self-Improvement Automation",
+    "summary": "Self-improvement dashboard changes should flow from real usage evidence into reviewable improvement items.",
+    "created_at": "2026-04-30T21:18:35.794Z",
+    "stage": "trending",
+    "council_session_id": "auto-ingestion",
+    "promotion_reason": "Detected from usage pattern analysis (1 signal)",
+    "proposing_model": "ollama-cloud/qwen3.5:397b-cloud",
+    "origin_type": "proactive",
+    "origin_tags": [
+      "🔍 Pattern Detected",
+      "📊 Early Signal"
+    ],
+    "proactive_lens": "pattern",
+    "idea_ledger_id": "ledger-self-improvement-automation",
+    "council_confidence": "medium",
+    "debate_summary": [
+      "Evidence: 1 matching usage signal found in available session/log text",
+      "Impact: Self-improvement dashboard changes should flow from real usage evidence into reviewable improvement items.",
+      "Resource check: start with a narrow, reversible implementation before broader automation"
+    ],
+    "key_disagreements": [
+      {
+        "model": "devil-advocate",
+        "concern": "Signal could be inflated by repeated discussion rather than repeated operational pain",
+        "resolution": "Require dedupe and keep items in trending/opportunity until supported by concrete task telemetry"
+      }
+    ],
+    "council_recommendation": "Use this canonical ingestion API as the single source of truth, with dedupe, complete schema, and evidence snippets.",
+    "passing_reasoning": "medium confidence based on 1 observed signal and low-risk staged rollout path",
+    "escalation_type": "auto",
+    "session_type": "scheduled",
+    "scheduled_for": "2026-04-30T21:19:24.061Z",
+    "session_time_of_day": "evening",
+    "decision": null,
+    "is_hidden": false
+  }
+]

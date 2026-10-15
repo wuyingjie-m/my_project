@@ -1,0 +1,23 @@
+[Unit]
+Description=OpenClaw Bot Review Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/openclaw-bot-review-furnace
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+Environment=OPENCLAW_INSTANCES_DIR=/data/agent
+Environment=OPENCLAW_CONFIG_PATH=/data/agent/openclaw_GTM/.openclaw/openclaw.json
+Environment=OPENCLAW_HOME=/data/agent/openclaw_GTM/.openclaw
+Environment=NEXT_PUBLIC_OPENCLAW_GATEWAY_PROXY=1
+ExecStart=/opt/openclaw-bot-review-furnace/deploy/furnace/start-openclaw-bot-review.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

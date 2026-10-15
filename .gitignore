@@ -1,0 +1,25 @@
+node_modules
+.next
+*.tsbuildinfo
+next-env.d.ts
+.idea
+.DS_Store
+/.openclaw
+/public/assets/pixel-office/*.mp3
+
+# Local R&D Council runtime state
+rd-council-work-orders.json
+self-improvement-command-log.jsonl
+rd-council-decision-log.jsonl
+.env.local
+.env.*.local
+
+# Runtime secrets & state — never commit
+key-registry.json
+.api-cache/
+.data/
+*.log
+idea_ledger.json
+rd-council-work-orders.json
+self-improvement-command-log.jsonl
+rd-council-decision-log.jsonl

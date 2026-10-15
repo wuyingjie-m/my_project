@@ -1,0 +1,61 @@
+{
+  "weeklyTokens": 1350000000,
+  "fiveHourTokens": 285000000,
+  "resetDow": 2,
+  "resetTime": "20:06",
+  "fiveHourAnchor": "2026-10-08T09:46:00+08:00",
+  "excludeInstances": [
+    "openclaw_sxs",
+    "openclaw_need",
+    "openclaw_XMT",
+    "openclaw_PPXS"
+  ],
+  "planLabels": {
+    "default": "TeamS+GTM",
+    "openclaw_TeamS": "TeamS+GTM",
+    "openclaw_GTM": "TeamS+GTM",
+    "openclaw_GYL": "GYL",
+    "openclaw_PJT": "PJT",
+    "openclaw_QD": "QD",
+    "openclaw_PPJD": "PPJD"
+  },
+  "fiveHourRatio": 0.227,
+  "timezoneOffsetHours": 8,
+  "perKeySplit": [
+    "openclaw_QD"
+  ],
+  "keyQuotas": {
+    "lDl37u": {
+      "weeklyTokens": 1350000000,
+      "fiveHourTokens": 285000000
+    },
+    "IMwWQy": {
+      "weeklyTokens": 1350000000,
+      "fiveHourTokens": 285000000
+    },
+    "sKx6k6": {
+      "weeklyTokens": 1350000000,
+      "fiveHourTokens": 285000000
+    },
+    "mPOjI2": {
+      "weeklyTokens": 1350000000,
+      "fiveHourTokens": 285000000
+    },
+    "4YdGZU": {
+      "weeklyTokens": 1350000000,
+      "fiveHourTokens": 285000000
+    },
+    "P32vzV": {
+      "weeklyTokens": 1350000000,
+      "fiveHourTokens": 285000000
+    }
+  },
+  "keyOwners": {
+    "mPOjI2": "GTM",
+    "4YdGZU": "GYL",
+    "P32vzV": "PJT",
+    "lDl37u": "QD",
+    "IMwWQy": "QD",
+    "sKx6k6": "PPJD"
+  }
+}
