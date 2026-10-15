@@ -1,0 +1,118 @@
+// instance.openclaw.json.example — OpenClaw 实例配置模板
+// 用法：复制到 <实例根>/.openclaw/openclaw.json，替换全部 <占位符> 后启动网关。
+// 占位符清单见同目录 README.md 的「占位符核对表」。
+// 注意：HOME 语义 = 实例根目录（openclaw_<X>/），配置解析在 $HOME/.openclaw/openclaw.json。
+{
+  "skills": {
+    "load": {
+      // 跨实例共享技能目录（所有 agent 可见，加载优先级最低）
+      "extraDirs": ["/data/agent/openclaw_shared/skills"]
+    }
+  },
+
+  "agents": {
+    "defaults": {
+      "imageModel": "zhipuglm/GLM-5.3-flash",
+      "thinkingDefault": "off",
+      "reasoningDefault": "stream",
+      // 实例级共享 workspace（各 agent 另有自己的 workspace，见 entries）
+      "workspace": "/data/agent/openclaw_<实例>/.openclaw/workspace",
+      "models": {
+        "zhipuglm/GLM-5.3": { "alias": "GLM" },
+        "zhipuglm/GLM-5.3-flash": { "alias": "GLM-Flash" },
+        "deepseek/deepseek-v4-flash": { "alias": "DeepSeek" }
+      },
+      "model": {
+        "primary": "zhipuglm/GLM-5.3-flash",
+        "fallbacks": ["zhipuglm/GLM-5.3", "deepseek/deepseek-v4-flash"]
+      },
+      "modelPolicy": { "allow": ["zhipuglm/GLM-5.3", "zhipuglm/GLM-5.3-flash", "deepseek/deepseek-v4-flash"] }
+    },
+    // ownership: explicit —— 每 agent 必须显式登记在 entries；定时任务挂名才不会悬空
+    "ownership": "explicit",
+    "entries": {
+      "<agent-id>": {
+        "name": "<Agent 显示名>",
+        "workspace": "/data/agent/openclaw_<实例>/.openclaw/workspaces/<agent-id>",
+        "agentDir": "/data/agent/openclaw_<实例>/.openclaw/agents/<agent-id>",
+        "model": { "primary": "zhipuglm/GLM-5.3-flash", "fallbacks": ["deepseek/deepseek-v4-flash"] }
+      }
+      // …每实例按业务线配置多个子 agent
+    }
+  },
+
+  "gateway": {
+    "mode": "local",
+    "auth": { "mode": "token", "token": "<GATEWAY_TOKEN：48 位随机串，openssl rand -hex 24 生成>" },
+    // ⚠️ port 以 /data/agent/ops/instance-ports.conf 注册表为准；
+    // 此处写错会出现「配置端口漂移」——CLI 拿 token 连到邻居实例网关报 unauthorized
+    "port": <GATEWAY_PORT>,
+    "bind": "loopback",
+    "tailscale": { "mode": "off" },
+    "trustedProxies": ["127.0.0.1/32"]
+  },
+
+  "session": { "dmScope": "per-channel-peer" },
+  "tools": { "profile": "coding" },
+
+  "plugins": {
+    "entries": {
+      "feishu": { "enabled": true },
+      "broadcast-gate": {
+        "enabled": true,
+        "config": {
+          "mode": "log",               // 观察期用 log；误拦率可控后切 enforce
+          "staleMinutes": 5,
+          "logFile": "/data/agent/openclaw_<实例>/.openclaw/logs/broadcast-violations.log"
+        }
+      }
+    },
+    "load": {
+      "paths": ["/data/agent/openclaw_<实例>/.openclaw/workspaces/<agent-id>/broadcast-gate"]
+    }
+  },
+
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "zhipuglm": {
+        // coding/paas 端点 = GLM Coding Plan 订阅套餐（5h+周限额）；/api/paas/v4 才是按量计费
+        "baseUrl": "https://open.bigmodel.cn/api/coding/paas/v4",
+        "api": "openai-completions",
+        "models": ["GLM-5.3", "GLM-5.3-flash"]
+      },
+      "deepseek": {
+        "baseUrl": "https://api.deepseek.com",
+        "api": "openai-completions",
+        "models": ["deepseek-v4-flash"]
+      }
+    }
+  },
+
+  // API key 的生效优先级：per-agent sqlite auth_profile_store > 环境变量 > models.json 内嵌字段（不生效，仅占位）
+  // 换 key 用官方命令：openclaw models auth paste-api-key --agent <id> --provider zhipuglm（key 走 stdin）
+  "auth": {
+    "profiles": {
+      "zhipuglm:default": { "provider": "zhipuglm", "mode": "api_key" },
+      "deepseek:default": { "provider": "deepseek", "mode": "api_key" }
+    }
+  },
+
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "connectionMode": "websocket",
+      "domain": "feishu",
+      "streaming": { "mode": "partial", "block": { "enabled": true } },
+      "accounts": {
+        "<bot-name>": {
+          // 飞书开放平台 → 企业自建应用 凭据；app_secret 视为高危凭据管理
+          "appId": "<FEISHU_APP_ID>",
+          "appSecret": "<FEISHU_APP_SECRET>",
+          // 事件订阅用长连接模式时无需公网回调地址
+          "allowFrom": ["<授权用户 open_id>"]
+        }
+      }
+    }
+  }
+}

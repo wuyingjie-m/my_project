@@ -1,0 +1,58 @@
+{
+  "timezone": "Asia/Shanghai",
+  "department": "新媒体分析部",
+  "person_name": "付秋诚",
+  "runs_dir": "",
+  "source": {
+    "daily_sheet": {
+      "url": "",
+      "sheet_name": "",
+      "sheet_id": "",
+      "scan_range": "A1:AZ300",
+      "header_row": 2,
+      "department_column": "A",
+      "name_column": "B",
+      "first_date_column": "C",
+      "min_report_chars": 100
+    },
+    "local_report_dir": ""
+  },
+  "calendar": {
+    "enabled": true,
+    "command": "lark-cli calendar +agenda --as user --start {card_start_iso} --end {card_end_iso} --json"
+  },
+  "tasks": {
+    "enabled": false,
+    "command": ""
+  },
+  "weather": {
+    "enabled": true,
+    "city": "Shanghai",
+    "fallback_emoji": "☁️"
+  },
+  "llm": {
+    "provider": "openai_compatible",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "command": ""
+  },
+  "card": {
+    "style": "scenery-glass",
+    "background_dir": "assets/scenery",
+    "background_blur_px": 10,
+    "background_dim": 0.26,
+    "max_today_items": 5,
+    "max_review_items": 5,
+    "output_format": "jpg",
+    "open_after_generate": false
+  },
+  "delivery": {
+    "enabled": true,
+    "as": "bot",
+    "user_id": "ou_4c26e049826974a458956854eccaa18d",
+    "chat_id": "",
+    "idempotency_prefix": "workday-morning-card-fqc",
+    "timeout_seconds": 180
+  }
+}

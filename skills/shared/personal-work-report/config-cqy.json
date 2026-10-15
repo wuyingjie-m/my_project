@@ -1,0 +1,163 @@
+{
+  "timezone": "Asia/Shanghai",
+  "default_date_mode": "yesterday",
+  "department": "GTM&商务分析部",
+  "person_name": "陈巧源",
+  "person_open_id": "ou_167cd7b673eafb6407c122b164d23c7f",
+  "person_open_ids": [],
+  "person_aliases": [
+    "巧源",
+    "陈巧源"
+  ],
+  "runs_dir": "",
+  "report_output_dir": "reports",
+  "schedule": {
+    "daily_store_time": "08:00",
+    "date_mode": "yesterday"
+  },
+  "blacklist": {
+    "chat_names": [
+      "日报&周报 check",
+      "工作日报",
+      "日报详情"
+    ],
+    "chat_ids": [
+      "oc_3d73f21da5b8aa18468f715ad46bbf60"
+    ],
+    "doc_title_keywords": [
+      "工作日报",
+      "日报详情"
+    ]
+  },
+  "work_keywords": [
+    "日报",
+    "周报",
+    "项目",
+    "需求",
+    "方案",
+    "数据",
+    "指标",
+    "报表",
+    "看板",
+    "分析",
+    "复盘",
+    "会议",
+    "纪要",
+    "交付",
+    "上线",
+    "验收",
+    "风险",
+    "协同",
+    "待办",
+    "AI",
+    "Codex",
+    "Claude",
+    "Skill",
+    "Workflow",
+    "预算",
+    "业绩",
+    "OKR",
+    "回收",
+    "渠道",
+    "收费",
+    "询价",
+    "watcher",
+    "lark-cli",
+    "抖音",
+    "知识库",
+    "管培生",
+    "标签",
+    "机大侠",
+    "库存"
+  ],
+  "collection": {
+    "timeout_seconds": 180,
+    "max_items_per_source": 200,
+    "im_context_page_size": 50,
+    "im_group_context_before": 2,
+    "im_group_context_after": 2,
+    "im_chat_list_max_pages": 10,
+    "im_message_max_pages": 5,
+    "noise_ack_words": [
+      "收到",
+      "好的",
+      "好",
+      "ok",
+      "OK",
+      "了解",
+      "明白",
+      "谢谢",
+      "辛苦",
+      "1"
+    ]
+  },
+  "feishu": {
+    "calendar_events": {
+      "enabled": false,
+      "command": "lark-cli calendar +agenda --as user --start {start_iso} --end {end_iso} --json"
+    },
+    "minutes": {
+      "enabled": true,
+      "search_command": "lark-cli minutes +search --as user --start {date} --end {date} --json",
+      "notes_command": "lark-cli vc +notes --as user --minute-tokens {minute_tokens} --format json"
+    },
+    "docs": {
+      "enabled": true,
+      "command": "lark-cli docs +search --as user --page-size 50 --json"
+    },
+    "ai_usage_sheet": {
+      "enabled": true,
+      "url": "https://atrenew.feishu.cn/wiki/Rbekwyg9Yi7DPfkiDC6c8xfjnue",
+      "sheet_name": "",
+      "sheet_id": "",
+      "scan_range": "A1:AZ300",
+      "header_row": 2,
+      "department_column": "A",
+      "name_column": "B",
+      "first_date_column": "C"
+    },
+    "im_messages": {
+      "enabled": true,
+      "chat_list_command": "lark-cli im +chat-list --as user --types=group,p2p --page-size 100 --sort active_time --json",
+      "message_command": "lark-cli im +chat-messages-list --as user --chat-id {chat_id} --start {start_iso} --end {end_iso} --page-size {page_size} --order asc --json",
+      "read_all_chats": true,
+      "configured_chats": []
+    }
+  },
+  "local_sources": {
+    "local_ai_usage": {
+      "enabled": false
+    }
+  },
+  "llm": {
+    "provider": "openai_compatible",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "command": ""
+  },
+  "publish": {
+    "dry_run": true,
+    "daily_sheet": {
+      "enabled": false,
+      "url": "https://atrenew.feishu.cn/wiki/AkCXwwngXiEzCxkNhdacFYfMnZg",
+      "sheet_name": "",
+      "sheet_id": "486f45",
+      "scan_range": "A1:AZ300",
+      "header_row": 2,
+      "department_column": "A",
+      "name_column": "B",
+      "first_date_column": "C",
+      "font_size": 12,
+      "word_wrap": "word-clip",
+      "row_height": 120
+    },
+    "daily_doc": {
+      "enabled": false
+    },
+    "commands": {
+      "write_doc": "",
+      "send_message": ""
+    }
+  }
+}

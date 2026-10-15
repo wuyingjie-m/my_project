@@ -1,0 +1,205 @@
+{
+  "timezone": "Asia/Shanghai",
+  "default_date_mode": "yesterday",
+  "department": "集团经营分析部",
+  "person_name": "靳文慧",
+  "person_open_id": "ou_060ab91399504b7fe20fb943df166712",
+  "person_open_ids": [],
+  "person_aliases": [
+    "文慧",
+    "靳文慧"
+  ],
+  "runs_dir": "",
+  "report_output_dir": "",
+  "schedule": {
+    "daily_store_time": "08:00",
+    "date_mode": "yesterday"
+  },
+  "blacklist": {
+    "chat_names": [],
+    "chat_ids": [],
+    "doc_title_keywords": [
+      "工作日报",
+      "日报详情"
+    ]
+  },
+  "work_keywords": [
+    "日报",
+    "周报",
+    "项目",
+    "需求",
+    "方案",
+    "数据",
+    "指标",
+    "报表",
+    "看板",
+    "分析",
+    "复盘",
+    "会议",
+    "纪要",
+    "交付",
+    "上线",
+    "验收",
+    "风险",
+    "协同",
+    "待办",
+    "AI",
+    "Codex",
+    "Claude",
+    "Skill",
+    "Workflow"
+  ],
+  "collection": {
+    "timeout_seconds": 180,
+    "max_items_per_source": 200,
+    "im_context_page_size": 50,
+    "im_group_context_before": 2,
+    "im_group_context_after": 2,
+    "im_chat_list_max_pages": 10,
+    "im_message_max_pages": 5,
+    "noise_ack_words": [
+      "收到",
+      "好的",
+      "好",
+      "ok",
+      "OK",
+      "了解",
+      "明白",
+      "谢谢",
+      "辛苦",
+      "1"
+    ]
+  },
+  "feishu": {
+    "calendar_events": {
+      "enabled": true,
+      "command": "lark-cli calendar +agenda --as user --start {start_iso} --end {end_iso} --json"
+    },
+    "minutes": {
+      "enabled": true,
+      "search_command": "lark-cli minutes +search --as user --start {date} --end {date} --json",
+      "notes_command": "lark-cli vc +notes --as user --minute-tokens {minute_tokens} --format json"
+    },
+    "docs": {
+      "enabled": true,
+      "command": "lark-cli docs +search --as user --page-size 50 --json"
+    },
+    "ai_usage_sheet": {
+      "enabled": true,
+      "url": "https://atrenew.feishu.cn/wiki/Rbekwyg9Yi7DPfkiDC6c8xfjnue",
+      "sheet_name": "",
+      "sheet_id": "",
+      "scan_range": "A1:AZ300",
+      "header_row": 2,
+      "department_column": "A",
+      "name_column": "B",
+      "first_date_column": "C"
+    },
+    "im_messages": {
+      "enabled": true,
+      "chat_list_command": "lark-cli im +chat-list --as user --types=group,p2p --page-size 100 --sort active_time --json",
+      "message_command": "lark-cli im +chat-messages-list --as user --chat-id {chat_id} --start {start_iso} --end {end_iso} --page-size {page_size} --order asc --json",
+      "read_all_chats": true,
+      "configured_chats": [
+        {
+          "chat_name": "Ai能效实验室",
+          "chat_id": "oc_67b165924864e78c32db808c45d36813"
+        },
+        {
+          "chat_name": "集团经营分析部",
+          "chat_id": "oc_f74eb67ebfdbb1700e5b166c09466437"
+        },
+        {
+          "chat_name": "AI 兴趣学习小组-2026",
+          "chat_id": "oc_d9799b33460e13eee87f4c723d83bf07"
+        },
+        {
+          "chat_name": "经分 AI 推进小组——致力于打造最智能的经营分析团队",
+          "chat_id": "oc_03cc6fd5bf6fd04cad2c39f8e4327ec3"
+        },
+        {
+          "chat_name": "工作日周报skill",
+          "chat_id": "ou_5f8d2ca6d465eb62a4690411b346f884"
+        }
+      ]
+    }
+  },
+  "local_sources": {
+    "local_ai_usage": {
+      "enabled": false,
+      "max_files": 80,
+      "max_chars_per_file": 6000,
+      "redact_patterns": [
+        "sk-[A-Za-z0-9_-]+",
+        "Bearer\\s+[A-Za-z0-9._-]+",
+        "1[3-9]\\d{9}"
+      ],
+      "sources": {
+        "codex": {
+          "enabled": true,
+          "display_name": "Codex",
+          "paths": [
+            "C:\\Users\\ahs\\.codex\\sessions"
+          ],
+          "file_globs": [
+            "**/*.jsonl",
+            "**/*.json",
+            "**/*.md",
+            "**/*.txt"
+          ]
+        },
+        "claude_code": {
+          "enabled": true,
+          "display_name": "Claude Code",
+          "paths": [
+            "C:\\Users\\ahs\\.claude\\projects"
+          ],
+          "file_globs": [
+            "**/*.jsonl",
+            "**/*.json",
+            "**/*.md",
+            "**/*.txt"
+          ]
+        }
+      }
+    }
+  },
+  "llm": {
+    "provider": "openai_compatible",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "command": "",
+    "max_tokens": 16384,
+    "extra_body": {
+      "thinking": {
+        "type": "disabled"
+      }
+    }
+  },
+  "publish": {
+    "dry_run": false,
+    "daily_sheet": {
+      "enabled": true,
+      "url": "https://atrenew.feishu.cn/wiki/AkCXwwngXiEzCxkNhdacFYfMnZg",
+      "sheet_name": "",
+      "sheet_id": "486f45",
+      "scan_range": "A1:AZ300",
+      "header_row": 2,
+      "department_column": "A",
+      "name_column": "B",
+      "first_date_column": "C",
+      "font_size": 12,
+      "word_wrap": "word-clip",
+      "row_height": 120
+    },
+    "daily_doc": {
+      "enabled": false,
+      "url": "https://atrenew.feishu.cn/wiki/AkCXwwngXiEzCxkNhdacFYfMnZg"
+    },
+    "commands": {
+      "write_doc": "",
+      "send_message": ""
+    }
+  }
+}

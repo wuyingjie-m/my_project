@@ -1,0 +1,16 @@
+{
+  "id": "broadcast-gate",
+  "name": "Broadcast Gate",
+  "version": "1.0.0",
+  "description": "把播报当成工具调用的前置条件：未按期播报的工具调用会被弹回，并提示 agent 先补一条过程播报再重试。cron/心跳/后台子代理会话豁免。",
+  "activation": { "onStartup": true },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "mode": { "type": "string", "enum": ["log", "enforce"], "default": "log" },
+      "staleMinutes": { "type": "number", "default": 5 },
+      "logFile": { "type": "string" }
+    },
+    "additionalProperties": false
+  }
+}

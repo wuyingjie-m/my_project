@@ -1,0 +1,57 @@
+{
+  "timezone": "Asia/Shanghai",
+  "department": "集团经营分析部",
+  "person_name": "吴英杰",
+  "runs_dir": "runs",
+  "source": {
+    "daily_sheet": {
+      "url": "https://atrenew.feishu.cn/wiki/AkCXwwngXiEzCxkNhdacFYfMnZg",
+      "sheet_name": "",
+      "sheet_id": "486f45",
+      "scan_range": "A1:AZ300",
+      "header_row": 2,
+      "department_column": "A",
+      "name_column": "B",
+      "first_date_column": "C"
+    },
+    "local_report_dir": "C:\\Users\\ahs\\.codex\\skills\\personal-work-report\\reports"
+  },
+  "calendar": {
+    "enabled": true,
+    "command": "lark-cli calendar +agenda --as user --start {card_start_iso} --end {card_end_iso} --json"
+  },
+  "tasks": {
+    "enabled": false,
+    "command": ""
+  },
+  "weather": {
+    "enabled": true,
+    "city": "Shanghai",
+    "fallback_emoji": "☁️"
+  },
+  "llm": {
+    "provider": "openai_compatible",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "command": ""
+  },
+  "card": {
+    "style": "scenery-glass",
+    "background_dir": "assets/scenery",
+    "background_blur_px": 10,
+    "background_dim": 0.26,
+    "max_today_items": 0,
+    "max_review_items": 0,
+    "output_format": "jpg",
+    "open_after_generate": false
+  },
+  "delivery": {
+    "enabled": false,
+    "as": "bot",
+    "user_id": "",
+    "chat_id": "",
+    "idempotency_prefix": "workday-morning-card",
+    "timeout_seconds": 180
+  }
+}

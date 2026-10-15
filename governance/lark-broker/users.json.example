@@ -1,0 +1,8 @@
+{
+  "users": {
+    "<subject>": {
+      "home": "/data/agent/openclaw_<实例>/.openclaw/agents/<agent-id>/home",
+      "agent_dir": "/data/agent/openclaw_<实例>/.openclaw/agents/<agent-id>"
+    }
+  }
+}
